@@ -12,7 +12,7 @@ const search = require('./modules/search')
 //引入 user模組
 const users = require('./modules/users')
 
-// 將網址結構符合 /restaurants 字串開頭的 request 導向restaurant模組
+// 將網址結構符合 /expenses 字串開頭的 request 導向expense模組
 router.use('/expenses', authenticator, expense)
 
 // 將網址結構符合 /search 字串開頭的 request 導向search模組
@@ -20,6 +20,7 @@ router.use('/search', authenticator, search)
 
 // 將網址結構符合 /users 字串開頭的 request 導向users模組
 router.use('/users', users)  // add this
+
 
 // 將網址結構符合 / 字串的 request 導向 home 模組
 router.use('/', authenticator, home)

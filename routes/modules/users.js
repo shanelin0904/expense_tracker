@@ -4,6 +4,7 @@ const User = require('../../models/user')
 // 引用 passport
 const passport = require('passport')
 const bcrypt = require('bcryptjs')
+
 router.get('/login', (req, res) => {
   res.render('login')
 })
@@ -64,3 +65,14 @@ router.post('/register', (req, res) => {
   })
     .catch(err => console.log(err))
 })
+
+router.get('/logout', function (req, res, next) {
+  req.logout(function (err) {
+    if (err) { return next(err) }
+    req.flash('success_msg', '你已經成功登出。')
+    res.redirect('/users/login')
+  })
+})
+
+// 匯出路由模組
+module.exports = router

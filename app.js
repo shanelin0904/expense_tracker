@@ -16,9 +16,29 @@ const bodyParser = require('body-parser')
 // 引用路由器
 const routes = require('./routes')
 require('./config/mongoose')
+
+
+
 // 設定樣板引擎
-app.engine('hbs', engine({ defaultLayout: 'main' }))
+app.engine('handlebars', engine({
+  defaultLayout: 'main', helpers: {
+    showIcon: function (categoryId) {
+      const category_icon = [
+        '<i class="fa-solid fa-house" ></i>',
+         '<i class="fa-solid fa-van-shuttle"></i>',
+         '<i class="fa-solid fa-face-grin-beam"></i>',
+        '<i class="fa-solid fa-utensils"></i>',
+         '<i class="fa-sharp fa-solid fa-pen-to-square"></i>',
+         '<i class="fa-sharp fa-solid fa-list"></i>'
+      ]
+      
+      return category_icon[categoryId-1]
+    } }}))
 app.set('view engine', 'handlebars')
+
+//設定靜態檔案
+app.use(express.static('public'))
+
 
 app.use(session({
   secret: process.env.SESSION_SECRET,
@@ -49,3 +69,4 @@ app.use(routes)
 app.listen(PORT, () => {
   console.log(`Express is listening on localhost:${PORT}`)
 })
+
