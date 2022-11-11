@@ -8,14 +8,14 @@ router.get('/', (req, res) => {
   const categoryId = req.query.categoryId
   const userId = req.user._id
   const typeObject = {
-    isOne: categoryId === "1",
-    isTwo: categoryId === "2",
-    isThree: categoryId === "3",
-    isFour: categoryId === "4",
-    isFive: categoryId === "5",
-    isSix: categoryId === "6"
+    isOne: categoryId === '1',
+    isTwo: categoryId === '2',
+    isThree: categoryId === '3',
+    isFour: categoryId === '4',
+    isFive: categoryId === '5',
+    isSix: categoryId === '6'
   }
-  if (categoryId === "6") {
+  if (categoryId === '6') {
     res.redirect('/')
   }
   Expense.find({ userId, categoryId: Number(categoryId) })
@@ -28,7 +28,6 @@ router.get('/', (req, res) => {
       }
       res.render('index', { expensesData, totalAmount: total, typeObject })
     })
-
 
     .catch(err => console.log(err))
 })

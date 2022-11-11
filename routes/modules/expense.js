@@ -1,9 +1,9 @@
 const CATEGORY = {
-  家居物業: "https://fontawesome.com/icons/home?style=solid",
-  交通出行: "https://fontawesome.com/icons/shuttle-van?style=solid",
-  休閒娛樂: "https://fontawesome.com/icons/grin-beam?style=solid",
-  餐飲食品: "https://fontawesome.com/icons/utensils?style=solid",
-  其他: "https://fontawesome.com/icons/pen?style=solid"
+  家居物業: 'https://fontawesome.com/icons/home?style=solid',
+  交通出行: 'https://fontawesome.com/icons/shuttle-van?style=solid',
+  休閒娛樂: 'https://fontawesome.com/icons/grin-beam?style=solid',
+  餐飲食品: 'https://fontawesome.com/icons/utensils?style=solid',
+  其他: 'https://fontawesome.com/icons/pen?style=solid'
 }
 
 // 引用 Express 與 Express 路由器
@@ -44,7 +44,7 @@ router.put('/:expenseId', (req, res) => {
   return Expense.findOne({ _id, userId })
     .then(expenseData => {
       expenseData.name = name
-      expenseData.date = date 
+      expenseData.date = date
       expenseData.categoryId = categoryId
       expenseData.amount = amount
       return expenseData.save()

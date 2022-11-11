@@ -5,7 +5,6 @@ const router = express.Router()
 const Expense = require('../../models/expenses')
 // 瀏覽全部花費項目
 router.get('/', (req, res) => {
- 
   const categoryId = 6
   const typeObject = {
     isOne: categoryId === 1,
@@ -15,8 +14,8 @@ router.get('/', (req, res) => {
     isFive: categoryId === 5,
     isSix: categoryId === 6
   }
-  
-  const userId = req.user._id   // 變數設定
+
+  const userId = req.user._id // 變數設定
   Expense.find({ userId }) // 取出 Expense model 裡的該user的資料
     .lean() // 把 Mongoose 的 Model 物件轉換成乾淨的 JavaScript 資料陣列
     .sort({ _id: 'asc' })

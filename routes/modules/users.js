@@ -20,7 +20,7 @@ router.get('/register', (req, res) => {
 router.post('/register', (req, res) => {
   // 取得註冊表單參數，並利用解構賦值的方式一次傳入變數
   const { name, email, password, confirmPassword } = req.body
-  //錯誤檢查
+  // 錯誤檢查
   const errors = []
   if (!email || !password || !confirmPassword) {
     errors.push({ message: '除了名字外，欄位都是必填。' })

@@ -24,14 +24,14 @@ module.exports = app => {
       .catch(err => done(err, false))
   }))
 
-// 設定序列化與反序列化
-passport.serializeUser((user, done) => {
-  done(null, user.id)
-})
-passport.deserializeUser((id, done) => {
-  User.findById(id)
-    .lean()
-    .then(user => done(null, user))
-    .catch(err => done(err, null))
-})
+  // 設定序列化與反序列化
+  passport.serializeUser((user, done) => {
+    done(null, user.id)
+  })
+  passport.deserializeUser((id, done) => {
+    User.findById(id)
+      .lean()
+      .then(user => done(null, user))
+      .catch(err => done(err, null))
+  })
 }
